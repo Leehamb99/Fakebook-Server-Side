@@ -5,8 +5,8 @@ app.use(cors());
 
 
 posts = [
-    {id: 1, post: "Found this new app called Fakebook"},
-    {id: 2, post: "Hello everyone "}
+    {id: 1, post: "Found this new app called Fakebook", comment: ""},
+    {id: 2, post: "Hello everyone ", comment: ""}
 ]
 
 
