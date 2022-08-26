@@ -21,6 +21,30 @@ describe('api server', () => {
             .expect(200, done)
     })
 
+    test('it responds to get /1 with a 200 status', (done) => {
+        request(api)
+            .get('/1')
+            .expect(200, done)
+    })
+
+    test('it responds to get /0 with a 404 status', (done) => {
+        request(api)
+            .get('/0')
+            .expect(404, done)
+    })
+
+    test('it responds to get /1/comments with a 200 status', (done) => {
+        request(api)
+            .get('/1/comments')
+            .expect(200, done)
+    })
+
+    test('it responds to get /0/comments with a 404 status', (done) => {
+        request(api)
+            .get('/0/comments')
+            .expect(404, done)
+    })
+
     test('responds to post / with status 201', (done) => {
         const testData = {
             post: 'We will never be the new facebook if we can\'t even make posts properly'
