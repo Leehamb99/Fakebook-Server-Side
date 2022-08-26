@@ -52,9 +52,20 @@ describe('api server', () => {
 
         request(api)
             .post('/')
+            .send(testData)
+            .set('Accept', 'application/json')
+            .expect(201, done)
+    })
+
+    test('responds to post /1/comments with status 201', (done) => {
+        const testData = {
+            comment: 'We will never be the new facebook if we can\'t even comment properly'
+        }
+
+        request(api)
+            .post('/1/comments')
             .send({ testData })
             .set('Accept', 'application/json')
             .expect(201, done)
-            // .expect({...testData, comments: "" }, done)
     })
 })
