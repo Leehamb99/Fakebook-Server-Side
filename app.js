@@ -15,9 +15,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    const newPostContent = req.body.name
+    const newPostContent = req.body.post
     const newId = posts[posts.length - 1].id + 1
-    const newPost = { id: newId, post: newPostContent, comments: "" }
+    const newPost = { id: newId, post: newPostContent }
     res.status(201).send(newPost)
     posts.push(newPost)
 })
