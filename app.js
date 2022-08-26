@@ -5,9 +5,11 @@ app.use(cors());
 
 
 posts = [
-    {id: 1, post: "Found this new app called Fakebook"},
-    {id: 2, post: "Hello everyone "}
+    {id: 1, post: "Found this new app called Fakebook", comment:  "This is cool"},
+    {id: 2, post: "Hello everyone ", comment: "Hello ID 2,Hello Again"}
 ]
+
+comments = [posts[1].comment.slice(",")]
 
 
 app.get('/', (req, res) => {
@@ -22,8 +24,48 @@ app.post('/', (req, res) => {
     posts.push(newPost)
 })
 
+app.get("/:id", (req, res) => {
 
+    try {
+        const postId = parseInt(req.params.id)
 
+        const selectedPost = posts.find(posts => posts.id === postId)
+        if (!selectedPost) {
+            throw new Error('This post is not accessible')
+        }
+        res.send(selectedPost)
+
+    } catch(err) {
+        res.status(404).send({message: err.message })
+    }
+
+})
+
+app.get("/:id/comments", (req, res) => {
+
+    try {
+        const postId = parseInt(req.params.id)
+        
+        const selectedPost = posts.find(posts => posts.id === postId)
+        if (!selectedPost) {
+            throw new Error('This post is not accessible')
+        }
+        res.send(selectedPost.comment)
+
+    } catch(err) {
+        res.status(404).send({message: err.message })
+    }
+}) 
+        
+
+app.post("/:id/comments", (req, res) => {
+    
+    const postId = parseInt(req.params.id)
+    let newComment = req.body.comment
+
+    posts[postId].push()
+    
+})
 
 
 
