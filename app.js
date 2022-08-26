@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
     res.send(posts);
 })
 
+app.post('/', (req, res) => {
+    const newPostContent = req.body.post
+    const newId = posts[posts.length - 1].id + 1
+    const newPost = { id: newId, post: newPostContent }
+    res.status(201).send(newPost)
+    posts.push(newPost)
+})
 
 app.get("/:id", (req, res) => {
 
@@ -59,8 +66,6 @@ app.post("/:id/comments", (req, res) => {
     posts[postId].push()
     
 })
-
-
 
 
 
