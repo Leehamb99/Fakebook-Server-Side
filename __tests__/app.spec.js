@@ -54,7 +54,7 @@ describe('api server', () => {
             .post('/')
             .send(testData)
             .set('Accept', 'application/json')
-            .expect(201, done)
+            .expect(201, {id: 3, ...testData}, done)
     })
 
     test('responds to post /1/ with status 201', (done) => {
