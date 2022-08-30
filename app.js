@@ -5,10 +5,11 @@ app.use(cors());
 
 
 let posts = [
-    {id: 1, post: "Found this new app called Fakebook", comment:  comments[0,3].comment},
-    {id: 2, post: "Hello everyone ", comment: "Hello ID 2"}
+    {id: 1, post: "Found this new app called Fakebook"},
+    {id: 2, post: "Hello everyone "}
     
 ]
+
 
 let comments = [{}]
 
@@ -60,10 +61,13 @@ app.get("/:id/comments", (req, res) => {
 }) 
         
 
-app.put("/:id/comments", (req, res) => {
+app.post("/:id/comments", (req, res) => {
     
-    const postId = parseInt(req.params.id)
-    let newComment = req.body.comment
+        const newCommentContent = req.body
+        const newId = comments[comments.length - 1].id + 1
+        const newComment = { id: newId, post: newCommentContent }
+        res.status(201).send(newComment)
+        posts.push(newComment)
     
 
     
