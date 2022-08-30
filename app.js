@@ -42,13 +42,13 @@ app.get("/:id", (req, res) => {
 })
         
 
-app.put("/:id", (req, res) => {
+app.post("/:id", (req, res) => {
     console.log(req.body)
     const postId = parseInt(req.params.id);
     let newComment = req.body.comment;
-    commentCount = Object.keys(posts[postId - 1]).length - 2;
+    commentCount = "Comment"+ (Object.keys(posts[postId - 1]).length - 1).toString();
     console.log(commentCount)
-    posts[postId - 1].commentCount = newComment
+    posts[postId - 1] = {...posts[postId -1], [commentCount]: newComment}
     commentCount++ 
     res.send(posts);
 
