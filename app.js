@@ -46,11 +46,11 @@ app.post("/:id", (req, res) => {
     console.log(req.body)
     const postId = parseInt(req.params.id);
     let newComment = req.body.comment;
-    commentCount = "Comment"+ (Object.keys(posts[postId - 1]).length - 1).toString();
+    commentCount = "Comment "+ (Object.keys(posts[postId - 1]).length - 1).toString();
     console.log(commentCount)
     posts[postId - 1] = {...posts[postId -1], [commentCount]: newComment}
     commentCount++ 
-    res.send(posts);
+    res.status(201).send(posts[postId - 1]);
 
     
 
