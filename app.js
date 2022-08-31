@@ -51,7 +51,6 @@ app.post("/:id", (req, res) => {
     commentCount++ 
     res.status(201).send(posts[postId - 1]);    
 })
-    res.status(201).send(posts[postId - 1]);
 
 app.delete("/:id", (req, res) => {
     const idToDelete = parseInt(req.params.id)
