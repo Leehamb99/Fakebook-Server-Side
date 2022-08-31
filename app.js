@@ -48,16 +48,25 @@ app.post("/:id", (req, res) => {
     let newComment = req.body.comment;
     commentCount = "Comment_"+ (Object.keys(posts[postId - 1]).length - 1).toString();
     posts[postId - 1] = {...posts[postId -1], [commentCount]: newComment}
+    commentCount++ 
+    res.status(201).send(posts[postId - 1]);    
+})
     res.status(201).send(posts[postId - 1]);
 
-    
-
-    
+app.delete("/:id", (req, res) => {
+    const idToDelete = parseInt(req.params.id)
+    posts.forEach(post => {
+        if (post.id === idToDelete) {
+            posts.splice(post, 1)
+        }
+    });
+    res.status(204).end()
 })
 
-
-
-
+app.delete('/', (req, res) => {
+    while (posts.length) posts.pop()
+    res.status(204).end()
+})
 
 
 
