@@ -7,8 +7,8 @@ app.use(express.urlencoded());
 
 
 let posts = [
-    {id: 1, post: "Found this new app called Fakebook",comment1: "This is cool"},
-    {id: 2, post: "Hello everyone ",comment1: "Hello ID 2"}  
+    {id: 1, post: "Found this new app called Fakebook",comment_1: "This is cool"},
+    {id: 2, post: "Hello everyone ",comment_1: "Hello ID 2"}  
 ]
 
 
@@ -46,7 +46,7 @@ app.post("/:id", (req, res) => {
     console.log(req.body)
     const postId = parseInt(req.params.id);
     let newComment = req.body.comment;
-    commentCount = "Comment "+ (Object.keys(posts[postId - 1]).length - 1).toString();
+    commentCount = "Comment_"+ (Object.keys(posts[postId - 1]).length - 1).toString();
     posts[postId - 1] = {...posts[postId -1], [commentCount]: newComment}
     res.status(201).send(posts[postId - 1]);
 
