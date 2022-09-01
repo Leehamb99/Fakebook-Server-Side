@@ -53,7 +53,7 @@ app.post("/:id", (req, res) => {
 })
 
 
-app.patch(":/id", (req, res) => {
+app.patch("/:/id", (req, res) => {
     const postId = parseInt(req.params.id);
     changes = req.body
     Object.assign(posts[postId - 1], changes)
