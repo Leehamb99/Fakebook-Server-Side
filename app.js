@@ -46,7 +46,7 @@ app.post("/:id", (req, res) => {
     console.log(req.body)
     const postId = parseInt(req.params.id);
     let newComment = req.body.comment;
-    commentCount = "Comment_"+ (Object.keys(posts[postId - 1]).length - 1).toString();
+    commentCount = "Comment_"+ (Object.keys(posts[postId - 1]).length - 4).toString();
     posts[postId - 1] = {...posts[postId -1], [commentCount]: newComment}
     commentCount++ 
     res.status(201).send(posts[postId - 1]);    
