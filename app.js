@@ -68,7 +68,7 @@ app.patch("/:id", (req, res) => {
 
 
 
-app.delete(":id", (req, res) => {
+app.delete("/:id", (req, res) => {
     const idToDelete = parseInt(req.params.id)
     posts.forEach(post => {
         if (post.id === idToDelete) {
