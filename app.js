@@ -7,8 +7,8 @@ app.use(express.urlencoded());
 
 
 let posts = [
-    {id: 1, post: "Found this new app called Fakebook",smiley_count: 0, like_count: 0, dislike_count: 0, comment_1: "This is cool"},
-    {id: 2, post: "Hello everyone ",smiley_count: 0, like_count: 0, dislike_count: 0,comment_1: "Hello ID 2"}  
+    {id: 1, post: "Found this new app called Fakebook",smiley_count: 0, like_count: 0, dislike_count: 0, Comment_1: "This is cool"},
+    {id: 2, post: "Hello everyone ",smiley_count: 0, like_count: 0, dislike_count: 0,Comment_1: "Hello ID 2"}  
 ]
 
 
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const newPostContent = req.body.post
     const newId = posts[posts.length - 1].id + 1
-    const newPost = { id: newId, post: newPostContent }
+    const newPost = { id: newId, post: newPostContent, smiley_count: 0, like_count: 0, dislike_count: 0 }
     res.status(201).send(newPost)
     posts.push(newPost)
 })
