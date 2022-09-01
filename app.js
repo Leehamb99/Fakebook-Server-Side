@@ -7,8 +7,8 @@ app.use(express.urlencoded());
 
 
 let posts = [
-    {id: 1, post: "Found this new app called Fakebook",smiley_count: 0, like_count: 0, dislike_count: 0, Comment_1: "This is cool"},
-    {id: 2, post: "Hello everyone ",smiley_count: 0, like_count: 0, dislike_count: 0,Comment_1: "Hello ID 2"}  
+    {id: 1, post: "Found this new app called Fakebook",smiley_count: 0, like_count: 0,dislike_count: 0, Comment_1: "This is cool"},
+    {id: 2, post: "Hello everyone ",smiley_count: 0, like_count: 0,dislike_count: 0, Comment_1: "Hello ID 2"}  
 ]
 
 
@@ -56,7 +56,13 @@ app.post("/:id", (req, res) => {
 app.patch("/:id", (req, res) => {
     const postId = parseInt(req.params.id);
     changes = req.body
-    Object.assign(posts[postId - 1], changes)
+    if (Object.keys(changes).toString() === 'like_count'){
+        (posts[postId - 1].like_count) += 1
+    }else if(Object.keys(changes).toString() === 'dislike_count'){
+        (posts[postId - 1].dislike_count) += 1
+    }else{
+        (posts[postId - 1].smiley_count) += 1
+    }
     res.status(200).send(posts[postId - 1]);
 })
 
