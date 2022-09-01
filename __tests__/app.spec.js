@@ -33,12 +33,6 @@ describe('api server', () => {
             .expect(404, done)
     })
 
-    xtest('it responds to get /1/comments with a 200 status', (done) => {
-        request(api)
-            .get('/1/comments')
-            .expect(200, done)
-    })
-
     test('it responds to get /0/comments with a 404 status', (done) => {
         request(api)
             .get('/0/comments')
