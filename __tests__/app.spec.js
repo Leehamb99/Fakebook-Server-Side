@@ -33,7 +33,7 @@ describe('api server', () => {
             .expect(404, done)
     })
 
-    test('it responds to get /1/comments with a 200 status', (done) => {
+    xtest('it responds to get /1/comments with a 200 status', (done) => {
         request(api)
             .get('/1/comments')
             .expect(200, done)
@@ -54,7 +54,7 @@ describe('api server', () => {
             .post('/')
             .send(testData)
             .set('Accept', 'application/json')
-            .expect(201, done)
+            .expect(201, {id: 3, ...testData}, done)
     })
 
     test('responds to post /1/ with status 201', (done) => {
@@ -68,4 +68,17 @@ describe('api server', () => {
             .set('Accept', 'application/json')
             .expect(201, done)
     })
+    
+    test('responds to delete /1 with status 204', (done) => {
+        request(api)
+            .delete('/1')
+            .expect(204, done)
+    })
+
+    test('responds to delete / with status 204', (done) => {
+        request(api)
+            .delete('/')
+            .expect(204, done)
+    })
+    
 })
